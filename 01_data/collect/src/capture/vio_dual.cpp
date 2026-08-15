@@ -1,6 +1,6 @@
 // 双目 MIPI 采集管线：camera -> VIN -> ISP -> VSE（LPWM 硬件同步触发）
 // 改编自 RDK_proj/mipi_vse_bpu_zerocopy/src/vio_pipeline.cpp，去掉推理与日志依赖。
-#include "vio_dual.hpp"
+#include "ps_collect/vio_dual.hpp"
 
 #include <arpa/inet.h>
 #include <cstdio>

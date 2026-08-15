@@ -54,15 +54,13 @@
 ```
 pathsentry-pipeline/
 ├── README.md            # 总体方案：架构、里程碑、风险
-├── docs/                # 六篇分项详细方案（数据/预标注/训练/剪枝/量化/部署）
-│   └── PROJECT_INTRO.md # 本文档
-├── data/                # 数据集与标注（规划）
-├── tools/               # 采集/抽帧/开源数据映射脚本（规划）
-├── prelabel/            # VLM 预标注双分支（规划）
-├── training/            # 多任务训练（规划）
-├── pruning/             # 剪枝（规划）
-├── quantization/        # 量化（规划）
-├── deploy/              # X5 C++ 端侧工程（规划）
+├── docs/                # 方案文档（项目介绍 + 六阶段详案）
+├── 01_data/collect/     # ps_collector 双目采集工具（模块化 C++）
+├── 02_prelabel/         # VLM 预标注双分支（规划）
+├── 03_training/         # 多任务训练（规划）
+├── 04_pruning/          # 剪枝（规划）
+├── 05_quantization/     # 量化（规划）
+├── 06_deploy/           # X5 C++ 端侧工程（规划）
 └── reports/             # 各阶段验收报告（规划）
 ```
 

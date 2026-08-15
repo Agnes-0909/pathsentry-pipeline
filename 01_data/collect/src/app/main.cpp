@@ -1,8 +1,8 @@
 // ps_collector：PathSentry 双目数据采集主程序（X5 板端）
 // 主循环：取左右帧 -> 硬件时间戳配对 -> 抽帧 -> 深拷贝入落盘队列
-#include "disk_writer.hpp"
-#include "options.hpp"
-#include "vio_dual.hpp"
+#include "ps_collect/disk_writer.hpp"
+#include "ps_collect/options.hpp"
+#include "ps_collect/vio_dual.hpp"
 
 #include <atomic>
 #include <chrono>

@@ -1,7 +1,7 @@
 #ifndef PS_COLLECT_VIO_DUAL_HPP_
 #define PS_COLLECT_VIO_DUAL_HPP_
 
-#include "stereo_frame.hpp"
+#include "ps_collect/stereo_frame.hpp"
 
 #include <cstdint>
 #include <memory>

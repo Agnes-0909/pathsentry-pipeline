@@ -1,4 +1,4 @@
-#include "disk_writer.hpp"
+#include "ps_collect/disk_writer.hpp"
 
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>

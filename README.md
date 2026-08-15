@@ -24,6 +24,22 @@ data ──► prelabel ──► training ──► pruning ──► quantizat
  └─── 困难样本回传闭环（data flywheel）◄─── 端侧高不确定性帧 ◄──┘
 ```
 
+仓库目录结构：
+
+```
+pathsentry-pipeline/
+├── README.md            # 总体方案：架构、里程碑、风险
+├── docs/                # 七篇方案文档（项目介绍 + 六阶段详案）
+├── 01_data/             # 阶段1 数据收集
+│   └── collect/         #   ps_collector 双目采集工具（core/capture/storage/cli/app 模块化）
+├── 02_prelabel/         # 阶段2 VLM 预标注（规划）
+├── 03_training/         # 阶段3 模型训练（规划）
+├── 04_pruning/          # 阶段4 剪枝（规划）
+├── 05_quantization/     # 阶段5 量化（规划）
+├── 06_deploy/           # 阶段6 端侧部署（规划）
+└── reports/             # 各阶段验收报告（规划）
+```
+
 ---
 
 ## 1. 任务定义
