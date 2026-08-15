@@ -3,7 +3,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-RDK_ROOT="${RDK_ROOT:-$(cd "${SCRIPT_DIR}/../../../RDK_resource/RDK_proj" && pwd)}"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+RDK_ROOT="${RDK_ROOT:-${REPO_ROOT}}"   # 三方库随仓库自带：REPO_ROOT/3rdlibrary
 BUILD_DIR="${BUILD_DIR:-${SCRIPT_DIR}/build_aarch64}"
 TOOLCHAIN_FILE="${BUILD_DIR}/aarch64-linux-gnu.toolchain.cmake"
 BUILD_TYPE="${BUILD_TYPE:-Release}"

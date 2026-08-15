@@ -22,17 +22,16 @@
 
 - 宿主机/容器：Ubuntu 22.04（推荐使用 docker 容器 `RDK_x86`，内含工具链与 `/project/3rdlibrary`）
 - 交叉工具链：`aarch64-linux-gnu-gcc / g++`、`cmake >= 3.14`
-- 依赖库：`RDK_resource/RDK_proj/3rdlibrary/{RDK_CAMERA, opencv_aarch64}`
+- 依赖库：仓库自带 `3rdlibrary/{RDK_CAMERA, opencv_aarch64}`（已 vendor、不入 git，需在本地存在）
 
 ### 2.2 编译命令
 
 ```bash
 cd 01_data/collect
-./build.sh                      # 宿主机：默认 RDK_ROOT=../../../RDK_resource/RDK_proj
+./build.sh                      # 默认 RDK_ROOT=仓库根（REPO_ROOT/3rdlibrary）
 
-# 在 RDK_x86 容器内（依赖在 /project/3rdlibrary）：
-docker cp 01_data/collect/. <容器>:/project/ps_collector/
-docker exec <容器> bash -lc 'cd /project/ps_collector && RDK_ROOT=/project ./build.sh'
+# 在容器内（挂载本仓库到 /project，装好 crossbuild-essential-arm64 + cmake 后）：
+docker exec <容器> bash -lc 'cd /project/01_data/collect && ./build.sh'
 ```
 
 产物：`build_aarch64/ps_collector`（AArch64 ELF，PIE）。
@@ -41,7 +40,7 @@ docker exec <容器> bash -lc 'cd /project/ps_collector && RDK_ROOT=/project ./b
 
 | 变量 | 默认 | 说明 |
 |---|---|---|
-| `RDK_ROOT` | `../../../RDK_resource/RDK_proj` | 3rdlibrary 所在工程根 |
+| `RDK_ROOT` | 仓库根（`REPO_ROOT`） | 含 `3rdlibrary/` 的目录 |
 | `BUILD_DIR` | `./build_aarch64` | 构建目录 |
 | `BUILD_TYPE` | `Release` | CMake 构建类型 |
 

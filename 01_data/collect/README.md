@@ -24,4 +24,4 @@ PathSentry Pipeline **阶段 01（数据收集）** 的板端采集工具，实�
 └── build.sh                     # aarch64 交叉编译入口
 ```
 
-依赖：`RDK_resource/RDK_proj/3rdlibrary` 的 RDK_CAMERA SDK 与 OpenCV aarch64（默认仓库同级路径，`RDK_ROOT` 可覆盖）。
+依赖：仓库自带的 `3rdlibrary/`（RDK_CAMERA SDK + OpenCV aarch64，已 vendor 到本仓库、不随 git 提交，见 `.gitignore`）。工程独立自包含，`RDK_ROOT` 可覆盖。

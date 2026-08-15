@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# RDK_resource 工程根目录（含 3rdlibrary），默认取仓库同级路径，可用 -DRDK_ROOT 覆盖
-set(RDK_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../RDK_resource/RDK_proj" CACHE PATH
-    "RDK_proj root with 3rdlibrary/")
+# 三方库随仓库自带（独立工程）：默认取仓库根的 3rdlibrary，可用 -DRDK_ROOT 覆盖
+set(RDK_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../.." CACHE PATH
+    "Directory containing 3rdlibrary/")
 set(RDK_CAMERA_ROOT "${RDK_ROOT}/3rdlibrary/RDK_CAMERA" CACHE PATH "RDK Camera SDK")
 set(OpenCV_DIR "${RDK_ROOT}/3rdlibrary/opencv_aarch64/lib/cmake/opencv4" CACHE PATH "OpenCV aarch64")
 
