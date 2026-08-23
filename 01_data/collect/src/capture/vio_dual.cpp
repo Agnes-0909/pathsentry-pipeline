@@ -18,6 +18,11 @@
 #include "vse_cfg.h"
 #include "vp_sensors.h"
 
+// tros 版 vp_sensors.h 未逐一声明各 sensor 配置，这里手动引入本工程用到的符号
+extern "C" {
+extern vp_sensor_config_t sc132gs_linear_1088x1280_raw10_30fps_1lane;
+}
+
 namespace ps::vio {
 namespace {
 
@@ -71,7 +76,8 @@ HardwareSyncTiming sc132gsHardwareSyncTiming() noexcept {
 
 SensorRouting makeSensorRouting(int camera_phy, int vcon_rx_phy,
                                 int lpwm_channel) noexcept {
-  return SensorRouting{camera_phy, vcon_rx_phy, lpwm_channel + 1};
+  // ts_src 不覆盖：沿用 sensor 配置默认值（与 tros 在本模组上验证的行为一致）
+  return SensorRouting{camera_phy, vcon_rx_phy, 0};
 }
 
 std::array<int, 3> sensorPowerSequence(bool active_high) noexcept {
@@ -94,6 +100,10 @@ void cloneSensorConfig(Pipeline& pipeline, int host) {
   pipeline.isp_ichn_attr = *source.isp_ichn_attr;
   pipeline.isp_ochn_attr = *source.isp_ochn_attr;
   const auto sync = sc132gsHardwareSyncTiming();
+  // LPWM 触发模式（对齐 tros mipi_cam 在本模组上的行为：sensor_mode=6，fps 统一 30）
+  pipeline.camera.sensor_mode = 6;
+  pipeline.camera.fps = sync.fps;
+  pipeline.mipi.rx_attr.fps = sync.fps;
   pipeline.vin_node_attr.lpwm_attr.enable = 1;  // LPWM 硬件触发，保证左右目同曝
   for (auto& channel : pipeline.vin_node_attr.lpwm_attr.lpwm_chn_attr) {
     channel.trigger_source = sync.trigger_source;

@@ -19,8 +19,9 @@ cv::Mat nv12ToBgr(const Nv12Image& nv12) {
   const cv::Mat y_plane(static_cast<int>(nv12.height),
                         static_cast<int>(nv12.width), CV_8UC1, y_ptr,
                         nv12.stride);
+  // NV12 的 UV 交织行 = width/2 个 uint16 元素（共 width 字节），step 仍为 stride
   const cv::Mat uv_plane(static_cast<int>((nv12.height + 1) / 2),
-                         static_cast<int>(nv12.width), CV_8UC2,
+                         static_cast<int>(nv12.width / 2), CV_8UC2,
                          y_ptr + nv12.ySize(), nv12.stride);
   cv::Mat bgr;
   cv::cvtColorTwoPlane(y_plane, uv_plane, bgr, cv::COLOR_YUV2BGR_NV12);

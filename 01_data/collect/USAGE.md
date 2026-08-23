@@ -56,6 +56,9 @@ scp build_aarch64/ps_collector root@<板子IP>:/root/
 ### 4.1 典型命令
 
 ```bash
+# 前提：保持 hobot cam-service 运行（相机供电由它使能；它并不占用 VIO）
+systemctl start hobot-cam-service   # 若已停
+# 本模组双目接在 MIPI host 0/2（vcon@0=vbus6 左目0x32，vcon@2=vbus4 右目0x33）
 # 草地逆光场景，抽帧 1/3（约 10fps），限时 5 分钟
 ./ps_collector -o /root/data/raw --scene grass_backlight --stride 3 --duration-sec 300
 
@@ -135,15 +138,23 @@ scp -r root@<板子IP>:/root/data/raw/<scene>_* ./data/raw/
 
 | 现象 | 原因与处置 |
 |---|---|
-| `SC132GS chip ID ... not found` | 相机未上电/接线错误/host 编号不对；核对 `--left-host/--right-host` 与 vcon 设备树 |
+| `SC132GS chip ID ... not found` | 相机未上电：先启动 `hobot-cam-service`（供电由它使能），再核对 `--left-host/--right-host`（本模组为 0/2）与 vcon 设备树 |
+| `hbn_vnode_set_attr(ISP) failed with code -10` | cam-service 未运行（相机未进入 LPWM 工作模式）；启动 cam-service 后重试 |
 | `failed to read vcon rx_phy/lpwm_chn` | 设备树缺少 vcon 节点，检查镜像与相机树配置 |
 | `too many consecutive frame timeouts` | ISP/VSE 起流失败或传感器掉线；重启程序，多次复现则查供电 |
 | `hardware timestamp missing` | 时间戳通路异常（ts_src 路由错误）；不要降容差掩盖，先排查硬件 |
 | `dropped` 持续增长 | 磁盘写不过来：`--stride` 调大 / 质量 降低 / 换 NVMe 或 eMMC 直写 |
 | 保存图像有撕裂/绿边 | stride 处理异常，确认使用 `cvtColorTwoPlane` 路径未被改动 |
 
-## 8. 二次开发指引
+## 8. 板端实采验证记录（2026-08-23, RDK X5 @192.168.1.12, SZYGSJKJ 双目模组）
+
+- 采集 15 对：acquired=15 saved=15 dropped=0 write_failures=0，max_skew=86.4µs（LPWM 硬同步生效）；
+- 关键配置：hosts 0/2、cam-service 保持运行、sensor_mode=6（LPWM 触发）、sensor .c 用 tros 60fps 版、ts_src 不覆盖；
+- 已知限制：未做 AWB OTP 配置，强光下可能过曝（待引入 `config_awb_otp` 等价逻辑，读取模组 EEPROM）。
+
+## 9. 二次开发指引
 
 - 新增传感器：在 `src/capture/sensor/` 添加寄存器配置（参考 `mipi_real_time_proj/src/sensor/` 有 sc230ai/imx219 等现成配置），并在 `vio_dual.cpp` 的 `cloneSensorConfig` 中切换；
+- 曝光/AWB：参考 tros `config_awb_otp`（mipi_real_time_proj/src/hobot_mipi_cap_iml.cpp）从模组 EEPROM 读参数配置 ISP；
 - 启用 IMU：经 `hbn_camera_parse_emb` 解析传感器嵌入式数据（规划项）；
 - 模块边界：`capture` 只管取帧与配对，`storage` 只管编码落盘，二者经 `StereoFrame`（深拷贝内存）解耦——替换任一模块不影响另一个。
