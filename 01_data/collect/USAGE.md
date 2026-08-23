@@ -53,7 +53,16 @@ scp build_aarch64/ps_collector root@<板子IP>:/root/
 
 ## 4. 运行
 
-### 4.1 典型命令
+### 4.0 一键采集（推荐，板上 /root 已部署）
+
+```bash
+~/start_capture.sh <场景标签>   # 开始采集（默认配置全内置，输出 /root/data/raw/<场景>_<时间>/）
+~/stop_capture.sh               # 优雅停止，打印统计与产物目录
+```
+
+默认配置：MIPI host 0/2、LPWM 硬同步、**保存前顺时针旋转 90°**（竖装传感器出图即横向 1280×1088）、JPEG q92、stride 3（约 10fps，实测零丢弃；编码吞吐上限约 10 对/秒，全帧率需加大 stride 或降质量）。日志：`/root/capture_logs/latest.log`。脚本源码随仓库 `scripts/`。
+
+### 4.1 典型命令（手动运行）
 
 ```bash
 # 前提：保持 hobot cam-service 运行（相机供电由它使能；它并不占用 VIO）
@@ -78,7 +87,7 @@ systemctl start hobot-cam-service   # 若已停
 | `--format FMT` | `jpg` | `jpg` 或 `png` |
 | `--jpg-quality N` | `92` | JPEG 质量 1-100 |
 | `--left-host N` | `0` | 左目 MIPI host 编号 |
-| `--right-host N` | `1` | 右目 MIPI host 编号 |
+| `--right-host N` | `2` | 右目 MIPI host 编号（本模组实测 0/2） |
 | `--timeout-ms N` | `1000` | 单帧获取超时 |
 | `--max-pairs N` | `0`（不限） | 最多保存对数 |
 | `--duration-sec N` | `0`（不限） | 最长采集时长（秒） |

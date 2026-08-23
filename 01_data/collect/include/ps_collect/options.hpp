@@ -12,7 +12,7 @@ struct Options {
   std::string format = "jpg";       // jpg | png
   int jpg_quality = 92;
   int left_host = 0;
-  int right_host = 1;
+  int right_host = 2;  // RDK X5 + SZYGSJKJ 双目模组实测：右目接 MIPI host 2
   int frame_timeout_ms = 1000;
   int max_consecutive_timeouts = 30;
   std::uint64_t max_pairs = 0;      // 0 = 不限，直到 Ctrl-C

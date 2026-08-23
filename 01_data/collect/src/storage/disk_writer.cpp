@@ -25,6 +25,8 @@ cv::Mat nv12ToBgr(const Nv12Image& nv12) {
                          y_ptr + nv12.ySize(), nv12.stride);
   cv::Mat bgr;
   cv::cvtColorTwoPlane(y_plane, uv_plane, bgr, cv::COLOR_YUV2BGR_NV12);
+  // 传感器以 1088x1280 竖向安装，保存前统一顺时针旋转 90°（输出 1280x1088）
+  cv::rotate(bgr, bgr, cv::ROTATE_90_CLOCKWISE);
   return bgr;
 }
 
@@ -47,7 +49,9 @@ bool DiskWriter::start() {
   if (!index_) return false;
   index_ << "frame_index,left_frame_id,right_frame_id,left_ts_ns,right_ts_ns,"
             "skew_ns,left_file,right_file\n";
-  worker_ = std::thread([this] { run(); });
+  for (int i = 0; i < kWriterThreads; ++i) {
+    workers_.emplace_back([this] { run(); });
+  }
   return true;
 }
 
@@ -69,11 +73,13 @@ bool DiskWriter::enqueue(StereoFrame&& frame) {
 void DiskWriter::close() {
   {
     std::unique_lock<std::mutex> lock(mutex_);
-    if (closed_ || !worker_.joinable()) return;
+    if (closed_ || workers_.empty()) return;
     closed_ = true;
   }
   condition_.notify_all();
-  worker_.join();
+  for (auto& worker : workers_) {
+    if (worker.joinable()) worker.join();
+  }
   if (index_.is_open()) index_.close();
 }
 
@@ -92,8 +98,8 @@ void DiskWriter::run() {
       frame = std::move(queue_.front());
       queue_.pop();
     }
-    writePair(frame);
     condition_.notify_all();
+    writePair(frame);
   }
 }
 

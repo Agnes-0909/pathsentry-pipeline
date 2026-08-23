@@ -25,7 +25,8 @@ class DiskWriter {
     std::uint64_t write_failures = 0;
   };
 
-  static constexpr std::size_t kMaxQueueDepth = 16;
+  static constexpr std::size_t kMaxQueueDepth = 64;
+  static constexpr int kWriterThreads = 3;  // NV12->BGR 编码是吞吐瓶颈，并行化
 
   DiskWriter(std::string session_dir, std::string format, int jpg_quality);
   ~DiskWriter();
@@ -44,7 +45,7 @@ class DiskWriter {
   std::string session_dir_;
   std::string format_;
   int jpg_quality_;
-  std::thread worker_;
+  std::vector<std::thread> workers_;
   std::mutex mutex_;
   std::mutex index_mutex_;
   std::condition_variable condition_;
