@@ -71,7 +71,8 @@ struct SensorRouting {
 };
 
 HardwareSyncTiming sc132gsHardwareSyncTiming() noexcept {
-  return {30, 33333, 10, 100, 0, 0};
+  // 5fps：数据采集用低速档（帧间隔 200ms，相邻帧冗余低，无需再抽帧）
+  return {5, 200000, 10, 100, 0, 0};
 }
 
 SensorRouting makeSensorRouting(int camera_phy, int vcon_rx_phy,
