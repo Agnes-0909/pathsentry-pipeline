@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qwen25-prelabel"
+version = "0.1.0"
+description = "Qwen2.5-VL obstacle prelabeling"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "pillow>=10.0",
+  "opencv-python>=4.10",
+  "transformers>=4.41.2",
+  "vllm>=0.28.0",
+]
+
+[project.scripts]
+qwen25-prelabel = "qwen25_prelabel.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

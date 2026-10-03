@@ -1,0 +1,5 @@
+numpy>=1.26
+pillow>=10.0
+opencv-python>=4.10
+transformers>=4.41.2
+vllm>=0.28.0

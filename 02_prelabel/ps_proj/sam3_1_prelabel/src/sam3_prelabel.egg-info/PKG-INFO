@@ -1,0 +1,70 @@
+Metadata-Version: 2.4
+Name: sam3-prelabel
+Version: 0.1.0
+Summary: Local SAM 3.1 image prelabeling workspace
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.26
+Requires-Dist: pillow>=10.0
+Requires-Dist: opencv-python>=4.10
+Requires-Dist: sam3>=0.1.4
+
+# SAM 3.1 离线预标注
+
+这是一个本地离线推理工程，直接在当前 `vllm` 环境里跑 SAM 3.1，对图片做初始分割预标注。
+
+## 安装
+
+```bash
+pip install -e .
+```
+
+## 用法
+
+单图：
+
+```bash
+sam3-prelabel image.jpg --prompts "person,car" --output-dir outputs
+```
+
+目录批量：
+
+```bash
+sam3-prelabel ./images --prompts "person\ncar" --output-dir outputs --recursive
+```
+
+也可以直接用模块启动：
+
+```bash
+python -m sam3_prelabel ./images --prompts "person,car"
+```
+
+## 输出
+
+每张图会生成一个子目录，里面包含：
+
+- `original.png`
+- `overlay.png`
+- `masks/mask_*.png`
+- `manifest.json`
+
+## 常用参数
+
+- `--prompt-file prompts.txt`
+- `--confidence-threshold 0.5`
+- `--max-regions 64`
+- `--device cuda|cpu`
+- `--checkpoint-path /path/to/checkpoint`
+- `--bpe-path /path/to/bpe_simple_vocab_16e6.txt.gz`
+- `--no-load-from-hf`
+
+## 环境变量
+
+- `SAM3_DEVICE`
+- `SAM3_CHECKPOINT_PATH`
+- `SAM3_BPE_PATH`
+- `SAM3_LOAD_FROM_HF`
+- `SAM3_CONFIDENCE_THRESHOLD`
+- `SAM3_MAX_REGIONS`
+- `SAM3_OUTPUT_DIR`
+

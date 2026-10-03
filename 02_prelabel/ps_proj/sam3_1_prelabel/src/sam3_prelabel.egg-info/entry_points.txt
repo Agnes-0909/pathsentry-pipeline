@@ -1,0 +1,2 @@
+[console_scripts]
+sam3-prelabel = sam3_prelabel.cli:main

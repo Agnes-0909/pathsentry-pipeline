@@ -1,0 +1,64 @@
+Metadata-Version: 2.4
+Name: qwen25-prelabel
+Version: 0.1.0
+Summary: Qwen2.5-VL obstacle prelabeling
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.26
+Requires-Dist: pillow>=10.0
+Requires-Dist: opencv-python>=4.10
+Requires-Dist: transformers>=4.41.2
+Requires-Dist: vllm>=0.28.0
+
+# Qwen2.5-VL 目标检测预标注
+
+用于自动驾驶避障预标注，从道路图像中提取 `person`、`vehicle`、`other_obstacle` 的直接标注结果。
+
+## 安装
+
+```bash
+cd /home/huace/new_storage/ps_proj/qwen2_5_7B_prelabel
+conda run -n vllm pip install -e .
+```
+
+如果 `import vllm` 报 `libcudart.so.13`，先补动态库路径：
+
+```bash
+export VLLM_ENV=/home/huace/miniconda3/envs/vllm
+export LD_LIBRARY_PATH="$VLLM_ENV/lib/python3.12/site-packages/nvidia/cu13/lib:$VLLM_ENV/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:${LD_LIBRARY_PATH:-}"
+conda run -n vllm python -c "import vllm; print(vllm.__version__)"
+```
+
+## 默认运行
+
+```bash
+bash /home/huace/new_storage/ps_proj/qwen2_5_7B_prelabel/scripts/run_left_sample_200.sh
+```
+
+等价命令：
+
+```bash
+conda run -n vllm qwen25-prelabel /home/huace/new_storage/ps_datasets/custom/left \
+  --model-dir /home/huace/new_storage/ps_proj/qwen2_5_7B_prelabel/model_dir \
+  --output-dir /home/huace/new_storage/ps_proj/qwen2_5_7B_prelabel/outputs/left_sample_200 \
+  --sample-size 200 \
+  --seed 20260830
+```
+
+## 只看抽样
+
+```bash
+PYTHONPATH=src python -m qwen25_prelabel /home/huace/new_storage/ps_datasets/custom/left \
+  --output-dir outputs/dry_run_left_200 \
+  --sample-size 200 \
+  --seed 20260830 \
+  --dry-run
+```
+
+## 输出
+
+- `sample_manifest.json`
+- `annotations.jsonl`
+- `samples/<image_stem>/manifest.json`
+- `samples/<image_stem>/overlay.png`
+- `labels/<image_stem>.txt`
