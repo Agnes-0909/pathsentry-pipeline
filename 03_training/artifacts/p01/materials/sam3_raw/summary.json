@@ -1,0 +1,18 @@
+{
+  "source_split": "train",
+  "checkpoint": "/home/huace/new_storage/ps_proj/prelabel/sam3_1/sam3.1_multiplex.pt",
+  "person_stride": 3,
+  "vehicle_stride": 10,
+  "selected_images": 461,
+  "counts": {
+    "person": 310,
+    "vehicle": 363
+  },
+  "new_or_rejected_this_run": {
+    "person": 310,
+    "vehicle": 363,
+    "rejected_vehicle": 2,
+    "rejected_person": 2
+  },
+  "total_cutouts": 673
+}

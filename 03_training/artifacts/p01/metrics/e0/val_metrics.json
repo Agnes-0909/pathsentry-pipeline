@@ -1,0 +1,29 @@
+{
+  "split": "val",
+  "checkpoint": "/home/huace/new_storage/ps_proj/training_proj/runs/yolo11s_experiments/final/e0/best.pt",
+  "detection": {
+    "precision": 0.3126195173988847,
+    "recall": 0.326179762316834,
+    "map50": 0.25245805647237274,
+    "map50_95": 0.10990968367191696,
+    "per_class": {
+      "person": {
+        "precision": 0.19344662585174205,
+        "recall": 0.12149532710280374,
+        "map50": 0.06212119863151645,
+        "map50_95": 0.01991319068896907
+      },
+      "vehicle": {
+        "precision": 0.4317924089460274,
+        "recall": 0.5308641975308642,
+        "map50": 0.442794914313229,
+        "map50_95": 0.19990617665486493
+      }
+    }
+  },
+  "segmentation": {
+    "iou": 0.9948030698116653,
+    "dice": 0.9973947652943881
+  },
+  "samples": 716
+}

@@ -1,0 +1,18 @@
+{
+  "experiment": "e0",
+  "stage": "final",
+  "epochs": 100,
+  "width": 960,
+  "height": 832,
+  "seg_weight": 5.0,
+  "data": "/home/huace/new_storage/ps_proj/training_proj/dataset/yolo_multitask/dataset.yaml",
+  "weights": "/home/huace/\u4e0b\u8f7d/yolo11s.pt",
+  "batch": 2,
+  "workers": 4,
+  "device": "cuda:0",
+  "seed": 42,
+  "lr": 0.0003,
+  "weight_decay": 0.01,
+  "train_limit": null,
+  "val_limit": null
+}

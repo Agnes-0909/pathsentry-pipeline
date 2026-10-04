@@ -1,0 +1,12 @@
+{
+  "checkpoint": "runs/p01/b1/best.pt",
+  "input_size": [
+    960,
+    832
+  ],
+  "batch": 1,
+  "samples": 32,
+  "mean_ms": 3.5028723868890665,
+  "p95_ms": 3.9614563109353185,
+  "peak_cuda_mib": 513.27490234375
+}

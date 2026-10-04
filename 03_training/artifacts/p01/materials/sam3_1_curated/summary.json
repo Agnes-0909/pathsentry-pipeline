@@ -1,0 +1,23 @@
+{
+  "source_split": "train",
+  "raw_bank": "/home/huace/new_storage/ps_proj/training_proj/runs/p01/materials/sam3_1",
+  "cross_check_weights": "/home/huace/\u4e0b\u8f7d/yolo11s.pt",
+  "person_conf_min": 0.03,
+  "person_max_aspect_ratio": 0.9,
+  "person_min_height": 32,
+  "vehicle_max_aspect_ratio": 2.0,
+  "manual_rejects": "/home/huace/new_storage/ps_proj/training_proj/scripts/p01_copy_paste_rejects.json",
+  "counts": {
+    "person": 165,
+    "vehicle": 309
+  },
+  "total_cutouts": 474,
+  "rejected": {
+    "person:low_person_confirmation": 62,
+    "vehicle:wide_or_grouped_vehicle": 52,
+    "person:person_shape": 14,
+    "person:manual_review": 66,
+    "vehicle:low_sam_score": 2,
+    "person:low_sam_score": 3
+  }
+}

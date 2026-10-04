@@ -8,3 +8,4 @@ logs
 02_prelabel/ps_proj/qwen2_5_7B_prelabel/model_dir
 sam3_1
 02_prelabel/ps_proj/prelabel_work
+03_training/runs
