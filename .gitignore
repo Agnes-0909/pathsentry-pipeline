@@ -9,3 +9,9 @@ logs
 sam3_1
 02_prelabel/ps_proj/prelabel_work
 03_training/runs
+04_pruning/experiments
+04_pruning/sensitivity_full/*.pt
+04_pruning/sensitivity_full/joint_finetuned/*.pt
+*.log
+04_pruning/final/*.pt
+*.onnx

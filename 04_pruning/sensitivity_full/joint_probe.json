@@ -1,0 +1,336 @@
+{
+  "source": "/home/huace/new_storage/ps_proj/training_proj/prune/experiments/p02_h2_p3_output/finetuned_best.pt",
+  "layers": [
+    "detector.model.5.conv",
+    "detector.model.6.cv2.conv",
+    "detector.model.7.conv",
+    "detector.model.8.cv2.conv",
+    "detector.model.9.cv2.conv",
+    "detector.model.10.cv2.conv",
+    "detector.model.17.conv",
+    "detector.model.19.cv2.conv",
+    "detector.model.20.conv",
+    "detector.model.22.cv2.conv"
+  ],
+  "channels_each": 16,
+  "manifest": [
+    {
+      "layer": "detector.model.5.conv",
+      "before": 256,
+      "after": 240,
+      "removed_indices": [
+        2,
+        50,
+        61,
+        93,
+        99,
+        101,
+        113,
+        117,
+        127,
+        162,
+        194,
+        197,
+        211,
+        219,
+        234,
+        247
+      ]
+    },
+    {
+      "layer": "detector.model.6.cv2.conv",
+      "before": 256,
+      "after": 240,
+      "removed_indices": [
+        43,
+        46,
+        61,
+        65,
+        80,
+        120,
+        126,
+        137,
+        145,
+        154,
+        165,
+        166,
+        206,
+        212,
+        222,
+        224
+      ]
+    },
+    {
+      "layer": "detector.model.7.conv",
+      "before": 512,
+      "after": 496,
+      "removed_indices": [
+        18,
+        45,
+        71,
+        103,
+        135,
+        153,
+        212,
+        251,
+        252,
+        324,
+        439,
+        468,
+        479,
+        492,
+        498,
+        500
+      ]
+    },
+    {
+      "layer": "detector.model.8.cv2.conv",
+      "before": 512,
+      "after": 496,
+      "removed_indices": [
+        47,
+        106,
+        132,
+        150,
+        217,
+        231,
+        301,
+        352,
+        385,
+        387,
+        393,
+        398,
+        399,
+        431,
+        480,
+        491
+      ]
+    },
+    {
+      "layer": "detector.model.9.cv2.conv",
+      "before": 512,
+      "after": 496,
+      "removed_indices": [
+        53,
+        72,
+        107,
+        109,
+        117,
+        134,
+        156,
+        231,
+        304,
+        312,
+        342,
+        363,
+        366,
+        463,
+        464,
+        484
+      ]
+    },
+    {
+      "layer": "detector.model.10.cv2.conv",
+      "before": 512,
+      "after": 496,
+      "removed_indices": [
+        3,
+        61,
+        103,
+        115,
+        119,
+        140,
+        187,
+        209,
+        227,
+        295,
+        337,
+        416,
+        419,
+        434,
+        439,
+        458
+      ]
+    },
+    {
+      "layer": "detector.model.17.conv",
+      "before": 128,
+      "after": 112,
+      "removed_indices": [
+        2,
+        8,
+        17,
+        32,
+        47,
+        56,
+        59,
+        67,
+        69,
+        100,
+        103,
+        107,
+        116,
+        119,
+        123,
+        124
+      ]
+    },
+    {
+      "layer": "detector.model.19.cv2.conv",
+      "before": 256,
+      "after": 240,
+      "removed_indices": [
+        4,
+        19,
+        21,
+        51,
+        76,
+        85,
+        121,
+        131,
+        134,
+        142,
+        143,
+        152,
+        172,
+        203,
+        222,
+        241
+      ]
+    },
+    {
+      "layer": "detector.model.20.conv",
+      "before": 256,
+      "after": 240,
+      "removed_indices": [
+        9,
+        10,
+        14,
+        25,
+        61,
+        69,
+        79,
+        88,
+        114,
+        129,
+        138,
+        141,
+        150,
+        216,
+        227,
+        245
+      ]
+    },
+    {
+      "layer": "detector.model.22.cv2.conv",
+      "before": 512,
+      "after": 496,
+      "removed_indices": [
+        47,
+        48,
+        49,
+        92,
+        109,
+        133,
+        137,
+        273,
+        277,
+        336,
+        340,
+        362,
+        382,
+        448,
+        456,
+        493
+      ]
+    }
+  ],
+  "baseline": {
+    "metrics": {
+      "detection": {
+        "precision": 0.3046283915028887,
+        "recall": 0.3480478743533092,
+        "map50": 0.24690276831349653,
+        "map50_95": 0.11451538681997415,
+        "per_class": {
+          "person": {
+            "precision": 0.17178460066690357,
+            "recall": 0.07476635514018691,
+            "map50": 0.057563175075678555,
+            "map50_95": 0.018411600676514792
+          },
+          "vehicle": {
+            "precision": 0.4374721823388738,
+            "recall": 0.6213293935664315,
+            "map50": 0.4362423615513145,
+            "map50_95": 0.21061917296343352
+          }
+        }
+      },
+      "segmentation": {
+        "iou": 0.9944431507380465,
+        "dice": 0.9972138342173869
+      },
+      "samples": 716
+    },
+    "stats": {
+      "parameters": 9839191,
+      "gmacs": 23.67960192,
+      "detection_shape": [
+        1,
+        6,
+        16380
+      ],
+      "segmentation_shape": [
+        1,
+        1,
+        208,
+        240
+      ]
+    }
+  },
+  "candidate": {
+    "metrics": {
+      "detection": {
+        "precision": 0.2933834077593253,
+        "recall": 0.31101551039245745,
+        "map50": 0.2482808874419386,
+        "map50_95": 0.10968816819403875,
+        "per_class": {
+          "person": {
+            "precision": 0.1443541277626601,
+            "recall": 0.08411214953271028,
+            "map50": 0.054758866766043024,
+            "map50_95": 0.017488221690649033
+          },
+          "vehicle": {
+            "precision": 0.4424126877559905,
+            "recall": 0.5379188712522046,
+            "map50": 0.4418029081178342,
+            "map50_95": 0.20188811469742846
+          }
+        }
+      },
+      "segmentation": {
+        "iou": 0.9941093456023645,
+        "dice": 0.9970459722228241
+      },
+      "samples": 716
+    },
+    "stats": {
+      "parameters": 9462199,
+      "gmacs": 23.15647776,
+      "detection_shape": [
+        1,
+        6,
+        16380
+      ],
+      "segmentation_shape": [
+        1,
+        1,
+        208,
+        240
+      ]
+    }
+  }
+}

@@ -14,7 +14,7 @@
 | 1 | 数据收集与任务定义 | [docs/01_data.md](docs/01_data.md) → `data/`, `tools/` | 开源数据 + 本地采集数据集、金标准测试集 |
 | 2 | VLM 预标注（双分支） | [docs/02_prelabel.md](docs/02_prelabel.md) → `prelabel/` | 大模型分支 / 微调小模型分支的自动化标注 |
 | 3 | 模型选型与训练 | [docs/03_training.md](docs/03_training.md) → `training/` | 检测+分割双头基线模型（FP32） |
-| 4 | 剪枝 | [docs/04_pruning.md](docs/04_pruning.md) → `pruning/` | 结构化剪枝轻量模型 |
+| 4 | 剪枝与结构优化 | [04_pruning/README.md](04_pruning/README.md)（方案背景：[docs/04_pruning.md](docs/04_pruning.md)）→ `04_pruning/` | H2 双输出 PyTorch/ONNX 候选、剪枝与测速证据 |
 | 5 | 量化 | [docs/05_quantization.md](docs/05_quantization.md) → `quantization/` | INT8 模型（HBM）+ 逐层精度报告 |
 | 6 | 端侧 C++ 部署 | [docs/06_deployment.md](docs/06_deployment.md) → `deploy/` | X5 上 20FPS+ 的实时感知 + 3D 测距 |
 
@@ -34,7 +34,7 @@ pathsentry-pipeline/
 │   └── collect/         #   ps_collector 双目采集工具（core/capture/storage/cli/app 模块化）
 ├── 02_prelabel/         # 阶段2 VLM 预标注（规划）
 ├── 03_training/         # 阶段3 模型训练（规划）
-├── 04_pruning/          # 阶段4 剪枝（规划）
+├── 04_pruning/          # 阶段4 剪枝与结构优化（已完成 P02 实验）
 ├── 05_quantization/     # 阶段5 量化（规划）
 ├── 06_deploy/           # 阶段6 端侧部署（规划）
 └── reports/             # 各阶段验收报告（规划）

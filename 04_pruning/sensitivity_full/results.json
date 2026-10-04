@@ -1,0 +1,1062 @@
+{
+  "source": "/home/huace/new_storage/ps_proj/training_proj/prune/experiments/p02_h2_p3_output/finetuned_best.pt",
+  "channels_removed_each": 8,
+  "baseline": {
+    "detection": {
+      "precision": 0.3046283915028887,
+      "recall": 0.3480478743533092,
+      "map50": 0.24690276831349653,
+      "map50_95": 0.11451538681997415,
+      "per_class": {
+        "person": {
+          "precision": 0.17178460066690357,
+          "recall": 0.07476635514018691,
+          "map50": 0.057563175075678555,
+          "map50_95": 0.018411600676514792
+        },
+        "vehicle": {
+          "precision": 0.4374721823388738,
+          "recall": 0.6213293935664315,
+          "map50": 0.4362423615513145,
+          "map50_95": 0.21061917296343352
+        }
+      }
+    },
+    "segmentation": {
+      "iou": 0.9944431507380465,
+      "dice": 0.9972138342173869
+    },
+    "samples": 716
+  },
+  "baseline_stats": {
+    "parameters": 9839191,
+    "gmacs": 23.67960192,
+    "detection_shape": [
+      1,
+      6,
+      16380
+    ],
+    "segmentation_shape": [
+      1,
+      1,
+      208,
+      240
+    ]
+  },
+  "results": [
+    {
+      "layer": "detector.model.2.cv2.conv",
+      "status": "ok",
+      "seconds": 3.45687812496908,
+      "before": 128,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          14,
+          22,
+          28,
+          56,
+          71,
+          81,
+          94,
+          100
+        ],
+        "before": 128,
+        "after": 120
+      },
+      "stats": {
+        "parameters": 9829191,
+        "gmacs": 23.52465024,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.2954041224569977,
+          "recall": 0.3348124080096084,
+          "map50": 0.24131137320854126,
+          "map50_95": 0.11203558840336887,
+          "per_class": {
+            "person": {
+              "precision": 0.15507386609583132,
+              "recall": 0.07037468271196609,
+              "map50": 0.04558089176877573,
+              "map50_95": 0.017369956108395642
+            },
+            "vehicle": {
+              "precision": 0.4357343788181641,
+              "recall": 0.5992501333072506,
+              "map50": 0.4370418546483068,
+              "map50_95": 0.20670122069834207
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9943419485989246,
+          "dice": 0.9971629482070262
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.0024797984166052833,
+      "delta_person_ap": -0.0010416445681191502,
+      "delta_iou": -0.00010120213912190312
+    },
+    {
+      "layer": "detector.model.3.conv",
+      "status": "ok",
+      "seconds": 3.5387133969925344,
+      "before": 128,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          34,
+          53,
+          63,
+          73,
+          82,
+          99,
+          102,
+          103
+        ],
+        "before": 128,
+        "after": 120
+      },
+      "stats": {
+        "parameters": 9828935,
+        "gmacs": 23.55140736,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.22453738654092603,
+          "recall": 0.30502398259407604,
+          "map50": 0.22286911240822715,
+          "map50_95": 0.10514505591618054,
+          "per_class": {
+            "person": {
+              "precision": 0.04592110338693556,
+              "recall": 0.028037383177570093,
+              "map50": 0.02839925808530863,
+              "map50_95": 0.009830576565504708
+            },
+            "vehicle": {
+              "precision": 0.4031536696949165,
+              "recall": 0.582010582010582,
+              "map50": 0.4173389667311457,
+              "map50_95": 0.2004595352668564
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9940004263485045,
+          "dice": 0.996991187377787
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.00937033090379362,
+      "delta_person_ap": -0.008581024111010084,
+      "delta_iou": -0.0004427243895419597
+    },
+    {
+      "layer": "detector.model.4.cv2.conv",
+      "status": "ok",
+      "seconds": 3.6043172790668905,
+      "before": 256,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          48,
+          70,
+          93,
+          112,
+          160,
+          202,
+          235,
+          239
+        ],
+        "before": 256,
+        "after": 248
+      },
+      "stats": {
+        "parameters": 9818183,
+        "gmacs": 23.58974592,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.2935782520101313,
+          "recall": 0.36630733982758906,
+          "map50": 0.2474707582285196,
+          "map50_95": 0.11306187589114366,
+          "per_class": {
+            "person": {
+              "precision": 0.1798389801549359,
+              "recall": 0.07476635514018691,
+              "map50": 0.058708127900564205,
+              "map50_95": 0.017768888913474626
+            },
+            "vehicle": {
+              "precision": 0.40731752386532677,
+              "recall": 0.6578483245149912,
+              "map50": 0.436233388556475,
+              "map50_95": 0.20835486286881272
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9944384020779288,
+          "dice": 0.9972114466326577
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.0014535109288304898,
+      "delta_person_ap": -0.0006427117630401664,
+      "delta_iou": -4.748660117681602e-06
+    },
+    {
+      "layer": "detector.model.5.conv",
+      "status": "ok",
+      "seconds": 3.516985640162602,
+      "before": 256,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          2,
+          93,
+          99,
+          127,
+          194,
+          197,
+          211,
+          234
+        ],
+        "before": 256,
+        "after": 248
+      },
+      "stats": {
+        "parameters": 9818695,
+        "gmacs": 23.61560448,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.2991279348535034,
+          "recall": 0.3504343239545732,
+          "map50": 0.24653827940011258,
+          "map50_95": 0.11415902466828334,
+          "per_class": {
+            "person": {
+              "precision": 0.16570170106922158,
+              "recall": 0.07476635514018691,
+              "map50": 0.05727554390180524,
+              "map50_95": 0.01853402652501188
+            },
+            "vehicle": {
+              "precision": 0.4325541686377853,
+              "recall": 0.6261022927689595,
+              "map50": 0.43580101489841994,
+              "map50_95": 0.20978402281155484
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9944413772626548,
+          "dice": 0.9972129425308182
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.00035636215169081165,
+      "delta_person_ap": 0.00012242584849708749,
+      "delta_iou": -1.7734753916531787e-06
+    },
+    {
+      "layer": "detector.model.6.cv2.conv",
+      "status": "ok",
+      "seconds": 3.5642094321083277,
+      "before": 256,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          46,
+          61,
+          80,
+          126,
+          137,
+          166,
+          212,
+          222
+        ],
+        "before": 256,
+        "after": 248
+      },
+      "stats": {
+        "parameters": 9797191,
+        "gmacs": 23.63477376,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.28575723190639285,
+          "recall": 0.3269342597351462,
+          "map50": 0.2482549386142499,
+          "map50_95": 0.1144081247875032,
+          "per_class": {
+            "person": {
+              "precision": 0.14024059866979363,
+              "recall": 0.07476635514018691,
+              "map50": 0.05550086540439602,
+              "map50_95": 0.01780484326451904
+            },
+            "vehicle": {
+              "precision": 0.4312738651429921,
+              "recall": 0.5791021643301055,
+              "map50": 0.4410090118241038,
+              "map50_95": 0.21101140631048737
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.994439486700873,
+          "dice": 0.9972119919725793
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.00010726203247095334,
+      "delta_person_ap": -0.0006067574119957529,
+      "delta_iou": -3.6640371734453225e-06
+    },
+    {
+      "layer": "detector.model.6.m.0.cv3.conv",
+      "status": "failed",
+      "seconds": 0.07123023201711476,
+      "error": "RuntimeError: Given groups=1, weight of size [64, 128, 1, 1], expected input[1, 124, 52, 60] to have 128 channels, but got 124 channels instead"
+    },
+    {
+      "layer": "detector.model.7.conv",
+      "status": "ok",
+      "seconds": 3.5374256358481944,
+      "before": 512,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          103,
+          153,
+          252,
+          324,
+          468,
+          479,
+          498,
+          500
+        ],
+        "before": 512,
+        "after": 504
+      },
+      "stats": {
+        "parameters": 9816647,
+        "gmacs": 23.66200512,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.30461967533378376,
+          "recall": 0.3479790287732602,
+          "map50": 0.24680690771774144,
+          "map50_95": 0.11449378813598854,
+          "per_class": {
+            "person": {
+              "precision": 0.1718216758455507,
+              "recall": 0.07476635514018691,
+              "map50": 0.057560934544541566,
+              "map50_95": 0.01841147846033158
+            },
+            "vehicle": {
+              "precision": 0.4374176748220168,
+              "recall": 0.6211917024063335,
+              "map50": 0.4360528808909413,
+              "map50_95": 0.2105760978116455
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9944436271733239,
+          "dice": 0.9972140737642452
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -2.159868398561582e-05,
+      "delta_person_ap": -1.2221618321192618e-07,
+      "delta_iou": 4.7643527745222514e-07
+    },
+    {
+      "layer": "detector.model.8.cv2.conv",
+      "status": "ok",
+      "seconds": 3.538289614021778,
+      "before": 512,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          47,
+          150,
+          231,
+          301,
+          387,
+          399,
+          431,
+          491
+        ],
+        "before": 512,
+        "after": 504
+      },
+      "stats": {
+        "parameters": 9830983,
+        "gmacs": 23.6731872,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.30486140266518746,
+          "recall": 0.34793892380641134,
+          "map50": 0.24715207383798732,
+          "map50_95": 0.11459234857759519,
+          "per_class": {
+            "person": {
+              "precision": 0.1717929858920742,
+              "recall": 0.07476635514018691,
+              "map50": 0.05755992318387835,
+              "map50_95": 0.01841093801452081
+            },
+            "vehicle": {
+              "precision": 0.4379298194383007,
+              "recall": 0.6211114924726358,
+              "map50": 0.43674422449209627,
+              "map50_95": 0.21077375914066962
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9944519389486792,
+          "dice": 0.9972182528227552
+        },
+        "samples": 716
+      },
+      "delta_map50_95": 7.696175762103574e-05,
+      "delta_person_ap": -6.62661993982433e-07,
+      "delta_iou": 8.788210632770799e-06
+    },
+    {
+      "layer": "detector.model.8.m.0.cv3.conv",
+      "status": "failed",
+      "seconds": 0.05020033195614815,
+      "error": "RuntimeError: Given groups=1, weight of size [128, 256, 1, 1], expected input[1, 252, 26, 30] to have 256 channels, but got 252 channels instead"
+    },
+    {
+      "layer": "detector.model.9.cv2.conv",
+      "status": "ok",
+      "seconds": 3.5501875320915133,
+      "before": 512,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          53,
+          72,
+          107,
+          134,
+          156,
+          342,
+          363,
+          484
+        ],
+        "before": 512,
+        "after": 504
+      },
+      "stats": {
+        "parameters": 9826887,
+        "gmacs": 23.66999232,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.30419611843132455,
+          "recall": 0.34879280657476464,
+          "map50": 0.24719017185425474,
+          "map50_95": 0.11453694384764006,
+          "per_class": {
+            "person": {
+              "precision": 0.17087323886516284,
+              "recall": 0.07476635514018691,
+              "map50": 0.05766306058513645,
+              "map50_95": 0.018432825120042767
+            },
+            "vehicle": {
+              "precision": 0.4375189979974862,
+              "recall": 0.6228192580093423,
+              "map50": 0.43671728312337305,
+              "map50_95": 0.21064106257523738
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9944503387208392,
+          "dice": 0.9972174482505691
+        },
+        "samples": 716
+      },
+      "delta_map50_95": 2.1557027665902728e-05,
+      "delta_person_ap": 2.1224443527975007e-05,
+      "delta_iou": 7.187982792755676e-06
+    },
+    {
+      "layer": "detector.model.10.cv2.conv",
+      "status": "ok",
+      "seconds": 3.471701218979433,
+      "before": 512,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          61,
+          115,
+          119,
+          140,
+          187,
+          227,
+          434,
+          439
+        ],
+        "before": 512,
+        "after": 504
+      },
+      "stats": {
+        "parameters": 9828935,
+        "gmacs": 23.66677248,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.29850104313851367,
+          "recall": 0.3513161581697407,
+          "map50": 0.24758724358568557,
+          "map50_95": 0.11443634259375575,
+          "per_class": {
+            "person": {
+              "precision": 0.16359523684250213,
+              "recall": 0.07476635514018691,
+              "map50": 0.05874433079317188,
+              "map50_95": 0.018777533564472874
+            },
+            "vehicle": {
+              "precision": 0.43340684943452523,
+              "recall": 0.6278659611992945,
+              "map50": 0.43643015637819926,
+              "map50_95": 0.21009515162303857
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9944090809145895,
+          "dice": 0.9971967039566192
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -7.904422621840546e-05,
+      "delta_person_ap": 0.00036593288795808143,
+      "delta_iou": -3.406982345699472e-05
+    },
+    {
+      "layer": "detector.model.10.m.0.ffn.1.conv",
+      "status": "failed",
+      "seconds": 0.06275399797596037,
+      "error": "RuntimeError: split_with_sizes expects split_sizes to sum exactly to 504 (input tensor's size at dimension 1), but got split_sizes=[256, 256]"
+    },
+    {
+      "layer": "detector.model.13.cv2.conv",
+      "status": "ok",
+      "seconds": 3.4587060688063502,
+      "before": 256,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          11,
+          63,
+          64,
+          98,
+          103,
+          171,
+          203,
+          214
+        ],
+        "before": 256,
+        "after": 248
+      },
+      "stats": {
+        "parameters": 9833031,
+        "gmacs": 23.65064832,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.2808972670149153,
+          "recall": 0.2918788837791953,
+          "map50": 0.21987598632208824,
+          "map50_95": 0.0970793876095786,
+          "per_class": {
+            "person": {
+              "precision": 0.14072129922405055,
+              "recall": 0.09345794392523364,
+              "map50": 0.05671730241854802,
+              "map50_95": 0.019376191602549674
+            },
+            "vehicle": {
+              "precision": 0.42107323480578,
+              "recall": 0.49029982363315694,
+              "map50": 0.3830346702256285,
+              "map50_95": 0.17478258361660753
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9939526779770619,
+          "dice": 0.9969671687348802
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.017435999210395556,
+      "delta_person_ap": 0.000964590926034882,
+      "delta_iou": -0.0004904727609845727
+    },
+    {
+      "layer": "detector.model.16.cv2.conv",
+      "status": "ok",
+      "seconds": 3.5946832350455225,
+      "before": 128,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          11,
+          12,
+          43,
+          82,
+          87,
+          89,
+          97,
+          118
+        ],
+        "before": 128,
+        "after": 120
+      },
+      "stats": {
+        "parameters": 9821679,
+        "gmacs": 23.54691456,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.25821305757357443,
+          "recall": 0.32988841088529564,
+          "map50": 0.22583086792249965,
+          "map50_95": 0.10027209499921949,
+          "per_class": {
+            "person": {
+              "precision": 0.12028579792828337,
+              "recall": 0.06542056074766354,
+              "map50": 0.0444005459170112,
+              "map50_95": 0.014451798210317663
+            },
+            "vehicle": {
+              "precision": 0.3961403172188655,
+              "recall": 0.5943562610229277,
+              "map50": 0.4072611899279881,
+              "map50_95": 0.18609239178812131
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9926885673956233,
+          "dice": 0.9963308704009215
+        },
+        "samples": 716
+      },
+      "delta_map50_95": -0.014243291820754664,
+      "delta_person_ap": -0.00395980246619713,
+      "delta_iou": -0.0017545833424231772
+    },
+    {
+      "layer": "detector.model.17.conv",
+      "status": "ok",
+      "seconds": 3.512958152918145,
+      "before": 128,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          2,
+          17,
+          47,
+          56,
+          59,
+          100,
+          107,
+          119
+        ],
+        "before": 128,
+        "after": 120
+      },
+      "stats": {
+        "parameters": 9827911,
+        "gmacs": 23.6443584,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.2994215403812869,
+          "recall": 0.34095554441219883,
+          "map50": 0.24779788755697815,
+          "map50_95": 0.11496061067741621,
+          "per_class": {
+            "person": {
+              "precision": 0.16211556405837863,
+              "recall": 0.07476635514018691,
+              "map50": 0.05760556149820025,
+              "map50_95": 0.018423745398128126
+            },
+            "vehicle": {
+              "precision": 0.4367275167041952,
+              "recall": 0.6071447336842107,
+              "map50": 0.4379902136157561,
+              "map50_95": 0.21149747595670432
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9943602165249866,
+          "dice": 0.997172133986487
+        },
+        "samples": 716
+      },
+      "delta_map50_95": 0.0004452238574420564,
+      "delta_person_ap": 1.2144721613333714e-05,
+      "delta_iou": -8.293421305982651e-05
+    },
+    {
+      "layer": "detector.model.19.cv2.conv",
+      "status": "ok",
+      "seconds": 3.5122534250840545,
+      "before": 256,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          51,
+          85,
+          134,
+          142,
+          143,
+          172,
+          203,
+          222
+        ],
+        "before": 256,
+        "after": 248
+      },
+      "stats": {
+        "parameters": 9810927,
+        "gmacs": 23.63444928,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.30614644003927927,
+          "recall": 0.34495839786856014,
+          "map50": 0.24773224019068857,
+          "map50_95": 0.11485985187848516,
+          "per_class": {
+            "person": {
+              "precision": 0.17178460066690357,
+              "recall": 0.07476635514018691,
+              "map50": 0.057517294952769846,
+              "map50_95": 0.01840386432646373
+            },
+            "vehicle": {
+              "precision": 0.44050827941165493,
+              "recall": 0.6151504405969334,
+              "map50": 0.4379471854286073,
+              "map50_95": 0.21131583943050658
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.9943553631962224,
+          "dice": 0.997169693572197
+        },
+        "samples": 716
+      },
+      "delta_map50_95": 0.00034446505851100373,
+      "delta_person_ap": -7.736350051062296e-06,
+      "delta_iou": -8.778754182403592e-05
+    },
+    {
+      "layer": "detector.model.20.conv",
+      "status": "ok",
+      "seconds": 3.5676152710802853,
+      "before": 256,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          9,
+          10,
+          14,
+          69,
+          79,
+          138,
+          150,
+          227
+        ],
+        "before": 256,
+        "after": 248
+      },
+      "stats": {
+        "parameters": 9816647,
+        "gmacs": 23.66200512,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.3046283915028887,
+          "recall": 0.3480478743533092,
+          "map50": 0.24690276831349653,
+          "map50_95": 0.11451538681997415,
+          "per_class": {
+            "person": {
+              "precision": 0.17178460066690357,
+              "recall": 0.07476635514018691,
+              "map50": 0.057563175075678555,
+              "map50_95": 0.018411600676514792
+            },
+            "vehicle": {
+              "precision": 0.4374721823388738,
+              "recall": 0.6213293935664315,
+              "map50": 0.4362423615513145,
+              "map50_95": 0.21061917296343352
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.994426146059038,
+          "dice": 0.9972052843611302
+        },
+        "samples": 716
+      },
+      "delta_map50_95": 0.0,
+      "delta_person_ap": 0.0,
+      "delta_iou": -1.700467900844771e-05
+    },
+    {
+      "layer": "detector.model.22.cv2.conv",
+      "status": "ok",
+      "seconds": 3.4681702819652855,
+      "before": 512,
+      "manifest": {
+        "removed_channels": 8,
+        "indices": [
+          48,
+          109,
+          273,
+          362,
+          382,
+          448,
+          456,
+          493
+        ],
+        "before": 512,
+        "after": 504
+      },
+      "stats": {
+        "parameters": 9826287,
+        "gmacs": 23.66951184,
+        "detection_shape": [
+          1,
+          6,
+          16380
+        ],
+        "segmentation_shape": [
+          1,
+          1,
+          208,
+          240
+        ]
+      },
+      "metrics": {
+        "detection": {
+          "precision": 0.3046283915028887,
+          "recall": 0.3480478743533092,
+          "map50": 0.24690276831349653,
+          "map50_95": 0.11451538681997415,
+          "per_class": {
+            "person": {
+              "precision": 0.17178460066690357,
+              "recall": 0.07476635514018691,
+              "map50": 0.057563175075678555,
+              "map50_95": 0.018411600676514792
+            },
+            "vehicle": {
+              "precision": 0.4374721823388738,
+              "recall": 0.6213293935664315,
+              "map50": 0.4362423615513145,
+              "map50_95": 0.21061917296343352
+            }
+          }
+        },
+        "segmentation": {
+          "iou": 0.994560992048695,
+          "dice": 0.9972730801549877
+        },
+        "samples": 716
+      },
+      "delta_map50_95": 0.0,
+      "delta_person_ap": 0.0,
+      "delta_iou": 0.00011784131064851433
+    },
+    {
+      "layer": "detector.model.22.m.0.cv3.conv",
+      "status": "failed",
+      "seconds": 0.052465845830738544,
+      "error": "RuntimeError: Given groups=1, weight of size [128, 256, 1, 1], expected input[1, 252, 26, 30] to have 256 channels, but got 252 channels instead"
+    }
+  ]
+}

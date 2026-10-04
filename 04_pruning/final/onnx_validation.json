@@ -1,0 +1,54 @@
+{
+  "onnx_path": "/home/huace/new_storage/ps_proj/training_proj/prune/final/best_fused.onnx",
+  "onnx_sha256": "a9c2294b189dedd5ead9e7616581b69218c1f336ca2883003786b48bc3f4d5e4",
+  "opset": 17,
+  "static_input_shape": [
+    1,
+    3,
+    832,
+    960
+  ],
+  "output_names": [
+    "detection",
+    "segmentation"
+  ],
+  "runtime_provider": "CPUExecutionProvider",
+  "comparisons": [
+    {
+      "detection_shape": [
+        1,
+        6,
+        16380
+      ],
+      "segmentation_shape": [
+        1,
+        1,
+        208,
+        240
+      ],
+      "detection_mean_abs_diff": 1.5754962078062817e-05,
+      "detection_max_abs_diff": 0.00067138671875,
+      "segmentation_mean_abs_diff": 2.4886030587367713e-06,
+      "segmentation_max_abs_diff": 2.193450927734375e-05,
+      "mask_agreement": 1.0
+    },
+    {
+      "detection_shape": [
+        1,
+        6,
+        16380
+      ],
+      "segmentation_shape": [
+        1,
+        1,
+        208,
+        240
+      ],
+      "detection_mean_abs_diff": 1.5041200640553143e-05,
+      "detection_max_abs_diff": 0.00079345703125,
+      "segmentation_mean_abs_diff": 2.5105678105319384e-06,
+      "segmentation_max_abs_diff": 1.811981201171875e-05,
+      "mask_agreement": 1.0
+    }
+  ]
+}
