@@ -15,3 +15,13 @@ sam3_1
 *.log
 04_pruning/final/*.pt
 *.onnx
+05_quantization/calibration_images
+05_quantization/compiled_*/mapper_workspace
+05_quantization/compiled_*/*.log
+05_quantization/compiled_*/hb_perf_result
+05_quantization/.hb_check
+05_quantization/work_*
+.hb_check
+05_quantization/**/*.bin
+05_quantization/**/*.pt
+05_quantization/**/*.onnx

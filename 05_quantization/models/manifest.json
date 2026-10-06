@@ -1,0 +1,111 @@
+{
+  "created_at": "2026-10-05T21:23:43.156591+08:00",
+  "target": "RDK X5 / bayes-e",
+  "selection": "B1 baseline vs H2 speed-selected architecture, not S1 channel pruning",
+  "artifacts": [
+    {
+      "id": "b1_original",
+      "source": "03_training/runs/p01/b1/best.pt",
+      "path": "05_quantization/models/b1_original/best.pt",
+      "bytes": 120522225,
+      "sha256": "454bad3586bdca890ad70c8142f0b2842bbcc83f4ca6fb56c74d2b1ff1fb8680",
+      "description": "未压缩基线；训练 checkpoint，model 为 state_dict"
+    },
+    {
+      "id": "h2_best",
+      "source": "04_pruning/experiments/p02_h2_p3_output/finetuned_best.pt",
+      "path": "05_quantization/models/h2_best/finetuned_best.pt",
+      "bytes": 39917728,
+      "sha256": "22ab0ce2db6df495dc89d68f7496851c6ab880e05ef6206da1674d2b54618289",
+      "description": "速度优先结构优化候选；未融合完整模型"
+    },
+    {
+      "id": "h2_fused",
+      "source": "04_pruning/final/best_fused.pt",
+      "path": "05_quantization/models/h2_best/best_fused.pt",
+      "bytes": 39618384,
+      "sha256": "d4e148c5a53f679d27bbf9db5d0858005f2cf0a7cf37e24a1d85c8fb865f1b3d",
+      "description": "H2 Conv/BN 融合完整模型"
+    },
+    {
+      "id": "h2_reference_onnx",
+      "source": "04_pruning/final/best_fused.onnx",
+      "path": "05_quantization/models/h2_best/reference_dual_output.onnx",
+      "bytes": 39721586,
+      "sha256": "a9c2294b189dedd5ead9e7616581b69218c1f336ca2883003786b48bc3f4d5e4",
+      "description": "通用 ONNX 参考；尚未通过 X5 工具链转换"
+    },
+    {
+      "id": "s1_pruned",
+      "source": "04_pruning/experiments/p02_s1_10pct/finetuned_best.pt",
+      "path": "05_quantization/models/s1_pruned/finetuned_best.pt",
+      "bytes": 37289933,
+      "sha256": "be72f03ceb261dc1061c3d90ba486312a20369bf60f483706bd6a83222a4c549",
+      "description": "通过质量门槛的 S1 真实通道剪枝模型；补充用于严格剪枝前后对比"
+    },
+    {
+      "id": "05_quantization_models_h2_best_h2_dual_output_opset11_onnx",
+      "source": "05_quantization/models/h2_best/h2_dual_output_opset11.onnx",
+      "path": "05_quantization/models/h2_best/h2_dual_output_opset11.onnx",
+      "bytes": 39466383,
+      "sha256": "1e9560a5af6671a915b4807298bd30154b7c28257dfd982f99d7705f8262f62f",
+      "description": "H2 固定输入双输出 opset 11；已通过 RDK X5 checker"
+    },
+    {
+      "id": "05_quantization_models_b1_original_b1_dual_output_opset11_onnx",
+      "source": "05_quantization/models/b1_original/b1_dual_output_opset11.onnx",
+      "path": "05_quantization/models/b1_original/b1_dual_output_opset11.onnx",
+      "bytes": 40116132,
+      "sha256": "f9e9dda8fdf25d5b7bcc7924d7319b5d45abfecd4b1d0935fd808c1568509ffb",
+      "description": "B1 固定输入双输出 opset 11；已通过 RDK X5 checker"
+    },
+    {
+      "id": "05_quantization_compiled_h2_h2_dual_output_opset11_bayese_960x832_bin",
+      "source": "05_quantization/compiled_h2/h2_dual_output_opset11_bayese_960x832.bin",
+      "path": "05_quantization/compiled_h2/h2_dual_output_opset11_bayese_960x832.bin",
+      "bytes": 16454257,
+      "sha256": "ce490d265bff18c626fd0a81cf94495ed1d964cfcebe4b5c762c80146303ea1d",
+      "description": "H2 RDK X5 bayes-e PTQ bin"
+    },
+    {
+      "id": "05_quantization_compiled_b1_b1_dual_output_opset11_bayese_960x832_bin",
+      "source": "05_quantization/compiled_b1/b1_dual_output_opset11_bayese_960x832.bin",
+      "path": "05_quantization/compiled_b1/b1_dual_output_opset11_bayese_960x832.bin",
+      "bytes": 16715890,
+      "sha256": "84f30141ca386a9919d971c1adc36998cba6a47748cea26e1e817f9fee530cd7",
+      "description": "B1 RDK X5 bayes-e PTQ bin"
+    },
+    {
+      "id": "05_quantization_models_h2_best_h2_raw_head_opset11_onnx",
+      "source": "05_quantization/models/h2_best/h2_raw_head_opset11.onnx",
+      "path": "05_quantization/models/h2_best/h2_raw_head_opset11.onnx",
+      "bytes": 39389102,
+      "sha256": "297cb9ed381270ddf05036efbc44a7a47a3fcb6efb66c3445e4b8c6fcf216b23",
+      "description": "H2 RDK X5 raw-head opset 11；三尺度 cls/bbox logits，DFL 在后处理；已通过 checker"
+    },
+    {
+      "id": "05_quantization_compiled_h2_raw_h2_raw_head_opset11_bayese_960x832_bin",
+      "source": "05_quantization/compiled_h2_raw/h2_raw_head_opset11_bayese_960x832.bin",
+      "path": "05_quantization/compiled_h2_raw/h2_raw_head_opset11_bayese_960x832.bin",
+      "bytes": 12064545,
+      "sha256": "44d36fb583860c8c21c1240620ab7e5083a9f3507dac948b11e75c1cfe29b8a1",
+      "description": "H2 raw-head RDK X5 bayes-e PTQ bin；DFL 在后处理"
+    }
+  ],
+  "conversion": {
+    "toolchain_image": "openexplorer/ai_toolchain_ubuntu_20_x5_cpu:v1.2.8",
+    "hb_mapper": "1.24.3",
+    "hbdk": "3.49.15",
+    "horizon_nn": "1.1.0",
+    "march": "bayes-e",
+    "calibration_samples": 50,
+    "input_shape": [
+      1,
+      3,
+      832,
+      960
+    ],
+    "runtime_input": "nv12",
+    "opset": 11
+  }
+}
