@@ -25,3 +25,6 @@ sam3_1
 05_quantization/**/*.bin
 05_quantization/**/*.pt
 05_quantization/**/*.onnx
+# 06_deploy uses the shared root 3rdlibrary directory.
+06_deploy/build_aarch64/
+06_deploy/logs/

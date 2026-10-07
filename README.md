@@ -16,7 +16,7 @@
 | 3 | 模型选型与训练 | [docs/03_training.md](docs/03_training.md) → `training/` | 检测+分割双头基线模型（FP32） |
 | 4 | 剪枝与结构优化 | [04_pruning/README.md](04_pruning/README.md)（方案背景：[docs/04_pruning.md](docs/04_pruning.md)）→ `04_pruning/` | H2 双输出 PyTorch/ONNX 候选、剪枝与测速证据 |
 | 5 | 量化 | [05_quantization/README.md](05_quantization/README.md)（方案背景：[docs/05_quantization.md](docs/05_quantization.md)）→ `05_quantization/` | RDK X5 PTQ、BPU `.bin` 和 B1/H2 耗时对比 |
-| 6 | 端侧 C++ 部署 | [docs/06_deployment.md](docs/06_deployment.md) → `deploy/` | X5 上 20FPS+ 的实时感知 + 3D 测距 |
+| 6 | 端侧 C++ 部署 | [06_deploy/README.md](06_deploy/README.md) → `06_deploy/` | 已固化 15 Hz 左目双进程部署、VSE/BPU 零拷贝、异步输出与性能基线 |
 
 ```
 data ──► prelabel ──► training ──► pruning ──► quantization ──► deploy (X5)
@@ -36,7 +36,8 @@ pathsentry-pipeline/
 ├── 03_training/         # 阶段3 模型训练（规划）
 ├── 04_pruning/          # 阶段4 剪枝与结构优化（已完成 P02 实验）
 ├── 05_quantization/     # 阶段5 量化与 RDK X5 转换（进行中）
-├── 06_deploy/           # 阶段6 端侧部署（规划）
+├── 3rdlibrary/          # 各阶段共享的第三方 SDK 与运行库
+├── 06_deploy/           # 阶段6 端侧部署（左目采集/推理双服务，复用同级三方库）
 └── reports/             # 各阶段验收报告（规划）
 ```
 
@@ -97,7 +98,7 @@ pathsentry-pipeline/
 | [docs/03_training.md](docs/03_training.md) | 模型选型与训练：开源+本地数据融合策略、训练配方、评价指标 |
 | [docs/04_pruning.md](docs/04_pruning.md) | 剪枝：结构化剪枝方法、稀疏率搜索、恢复训练、误差控制 |
 | [docs/05_quantization.md](docs/05_quantization.md) | 量化：PTQ/QAT、校准集构建、精度验证 |
-| [docs/06_deployment.md](docs/06_deployment.md) | 端侧部署：X5 工具链、C++ 推理工程、双目深度融合、性能调优 |
+| [06_deploy/README.md](06_deploy/README.md) | RDK-X5 左目 VIO/VSE、socket FD 传递、BPU raw-head 推理和 DFL 后处理 |
 
 ## 4. 分阶段里程碑
 

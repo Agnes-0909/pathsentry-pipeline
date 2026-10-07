@@ -1,0 +1,205 @@
+{
+  "baseline": "rdk-x5-stable-20261007",
+  "validated_on": "2026-10-07",
+  "target": "RDK-X5 / aarch64",
+  "toolchain_image": "openexplorer/ai_toolchain_ubuntu_20_x5_cpu:v1.2.8",
+  "compiler": "aarch64 GNU 11.3 / C++17 / Release",
+  "configuration": "configs/rdk_x5.env",
+  "defaults": {
+    "hz": 15,
+    "warmup_camera_frames": 5,
+    "queue_capacity": 1,
+    "capture_cpus": "2-3",
+    "inference_cpus": "0-7",
+    "rt_priority": 0,
+    "cpu_governor": "performance",
+    "bpu_governor": "performance",
+    "save_results": "async",
+    "log_level": "info",
+    "inference_start_delay_seconds": 1
+  },
+  "model_interface": {
+    "input": "NV12 960x832 batch 1",
+    "outputs": 7,
+    "mask": "uint8 240x208",
+    "dfl_bins": 16,
+    "strides": [
+      8,
+      16,
+      32
+    ]
+  },
+  "validation": {
+    "report": "reports/stability_20261007.md",
+    "metrics": "reports/stability_20261007.json",
+    "total_comparison_frames": 5400,
+    "final_steady_samples": 1785,
+    "final_e2e_p99_ms": 40.701,
+    "final_e2e_max_ms": 43.071,
+    "final_result_hz": 14.984,
+    "local_workers_test": "passed in optimization run",
+    "board_artifacts_sha256_verified": true,
+    "configuration_launch_checks": "shell syntax, defaults, overrides, invalid governor passed without starting services"
+  },
+  "notes": [
+    "SHA256 values identify the validated snapshot; they are not a promise of byte-identical rebuilds with different compilers/paths.",
+    "Build outputs and raw logs are ignored by Git; rebuild binaries with the pinned toolchain.",
+    "Stateful board prerequisites include camera device tree, SDK-compatible drivers and governor configuration.",
+    "Steady-state excludes first five processed frames in each 600-frame run. Current test scene had zero detections.",
+    "Shared dependency layout revision: use sibling ../3rdlibrary, build read-only mounted shared SDKs; both rebuilt executables are byte-identical to the validated board baseline."
+  ],
+  "artifacts": [
+    {
+      "path": "models/h2_raw_head.bin",
+      "bytes": 12064545,
+      "sha256": "44d36fb583860c8c21c1240620ab7e5083a9f3507dac948b11e75c1cfe29b8a1"
+    },
+    {
+      "path": "build_aarch64/capture_service",
+      "bytes": 131536,
+      "sha256": "463f33512aaee55dd60414f46168a27b7530e42e2ec0ff94cc637278ff99d95e"
+    },
+    {
+      "path": "build_aarch64/inference_service",
+      "bytes": 97296,
+      "sha256": "9ffa5bacd11da368274bf210bef6dd9bbb2d55697da71d27339f6a2b7dc576e5"
+    },
+    {
+      "path": "configs/rdk_x5.env",
+      "bytes": 536,
+      "sha256": "bc49b03bba2c6eee2dabd9c1578047ebb9288c7024dfc44721ad88ce530ab14d"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 1430,
+      "sha256": "fd39c83b9aedf207aafd8b52d20072c899c579b3129be05498fe49bd436d412a"
+    },
+    {
+      "path": "build.sh",
+      "bytes": 968,
+      "sha256": "1e7c20ec9b05d7a1602a3cf9c2c22a96691361f0200dc4105b5b5b7be2faf6ed"
+    },
+    {
+      "path": "include/async_logger.hpp",
+      "bytes": 380,
+      "sha256": "f9b2c4c92dabc8034da5bc410080462392c6735bd76145b6079a9b8095199fcf"
+    },
+    {
+      "path": "include/deploy_types.hpp",
+      "bytes": 2057,
+      "sha256": "3e09695ca97d923203633b7e65c0dcd8639e61029276c775868a364c42044b2b"
+    },
+    {
+      "path": "include/logger.hpp",
+      "bytes": 798,
+      "sha256": "bce05073a54c7d61b0df0d01897713f99bae22ae8339800848b22277b64e8287"
+    },
+    {
+      "path": "include/raw_head_runner.hpp",
+      "bytes": 543,
+      "sha256": "aada6596e046e4d82cd0d5face91fee7b0e517773ee178968f5a84da1ca8c645"
+    },
+    {
+      "path": "include/result_writer.hpp",
+      "bytes": 2903,
+      "sha256": "0fae77195a403c0fd440cfabfb67c3cec9b0eb86abe341237aa08abe09ee0e63"
+    },
+    {
+      "path": "include/socket_protocol.hpp",
+      "bytes": 1123,
+      "sha256": "a1ed002c28c5c6e96537acb39db142a1a6b2c3a9ccc392faf7cee66279d45c14"
+    },
+    {
+      "path": "include/vio_pipeline.hpp",
+      "bytes": 1313,
+      "sha256": "f95c15f4099b5d1d7d19a19747988a59657376aeb822288536f96c8bcf55a2cf"
+    },
+    {
+      "path": "include/vse_frame.hpp",
+      "bytes": 86,
+      "sha256": "0028bb6bd1ca4d083fac889abec6bfbf179b77c3d9a4968e422179e3c3c4642b"
+    },
+    {
+      "path": "include/vp_sensors.h",
+      "bytes": 802,
+      "sha256": "89431a6efe8a30950d29472be53a7c50017b79c1bf6e1249fdc0726cd71779f4"
+    },
+    {
+      "path": "src/capture_service.cpp",
+      "bytes": 8363,
+      "sha256": "0e7ccdf833f748e1db15cb1be2119437a25947a08bb5f11c32a46ea65967ea46"
+    },
+    {
+      "path": "src/cleanup_stack.cpp",
+      "bytes": 1298,
+      "sha256": "11f39799c018d009671da74a12df740cac07d08eac9f43110ce8df89bbd6f72c"
+    },
+    {
+      "path": "src/inference_service.cpp",
+      "bytes": 3538,
+      "sha256": "282d14a7d441889bcff5589cdaacffe467ef3ec4823edfeef6d24882a3f6aadc"
+    },
+    {
+      "path": "src/logger.cpp",
+      "bytes": 2014,
+      "sha256": "afc7cbb55253c7fd2ed6ca893b9dd059006f6fbb43715e0a83e203ba36b9000e"
+    },
+    {
+      "path": "src/raw_head_runner.cpp",
+      "bytes": 8016,
+      "sha256": "23173ea66251955bb9798e9b00fb522dee5e6e068e9f93e8e93356a6d8bf1bf1"
+    },
+    {
+      "path": "src/sc132gs_linear_1088x1280_raw10_30fps_1lane.c",
+      "bytes": 3812,
+      "sha256": "ec36039c68c91bd5f5d76e71013f8282b231e0914ecc2775f5d3bb81668bb4c6"
+    },
+    {
+      "path": "src/socket_protocol.cpp",
+      "bytes": 3538,
+      "sha256": "7df58926b18860b8a6a89db85a47be52c2fa5fc97d738aa8b6a0842fb653a7f0"
+    },
+    {
+      "path": "src/vio_pipeline.cpp",
+      "bytes": 20644,
+      "sha256": "0060342bc4ae5ac12ba6c1c336800d5837d4b1c4f2b7295d38b13d6c0c1ddaa1"
+    },
+    {
+      "path": "scripts/perf/build.sh",
+      "bytes": 102,
+      "sha256": "81fab39661f7e1e4d768c499ca973a61314a0dcb79bb886c274a21aa6efddc58"
+    },
+    {
+      "path": "scripts/perf/deploy.sh",
+      "bytes": 1166,
+      "sha256": "bfb627660a4a4a3d2a9d0332f0a0551b53c9c8bbb912f6ee2ba2958c02dfc2d7"
+    },
+    {
+      "path": "scripts/perf/pull_logs.sh",
+      "bytes": 625,
+      "sha256": "d720c47ae0c4cc4786573aca569c8cbe4e4a469d53453569b4a7980a11f41ed3"
+    },
+    {
+      "path": "scripts/perf/run.sh",
+      "bytes": 2116,
+      "sha256": "179720d68c2496bd2280aa415a7caa02493c9c214c4a35760747e277a0ddec06"
+    }
+  ],
+  "dependency_layout": {
+    "source_root": "../3rdlibrary",
+    "required": [
+      "DNN",
+      "RDK_CAMERA"
+    ],
+    "optional_not_linked": [
+      "opencv_aarch64"
+    ],
+    "cmake_root_variable": "THIRD_PARTY_ROOT",
+    "deployment_library_source": "../3rdlibrary",
+    "board_library_destination": "$REMOTE/3rdlibrary",
+    "duplicate_entries_verified_identical": 275,
+    "missing_entries_copied": 0,
+    "duplicate_directory_removed": "06_deploy/3rdlibrary",
+    "rebuilt_executables_identical_to_validated_baseline": true
+  }
+}

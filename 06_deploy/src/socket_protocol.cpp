@@ -1,0 +1,17 @@
+#include "socket_protocol.hpp"
+#include <sys/socket.h>
+#include <sys/un.h>
+#include <unistd.h>
+#include <cerrno>
+#include <cstring>
+#include <algorithm>
+namespace deploy {
+bool sendAll(int fd,const void* data,std::size_t n){const char*p=(const char*)data;while(n){ssize_t r=send(fd,p,n,MSG_NOSIGNAL);if(r<=0)return false;p+=r;n-=r;}return true;}
+bool recvAll(int fd,void* data,std::size_t n){char*p=(char*)data;while(n){ssize_t r=recv(fd,p,n,MSG_WAITALL);if(r<=0)return false;p+=r;n-=r;}return true;}
+bool sendFrame(int sock,const Frame& f){FrameHeader h;h.frame_id=f.id;h.timestamp=f.timestamp;h.width=f.layout.width;h.height=f.layout.height;h.stride=f.layout.stride;h.y_bytes=f.layout.y_bytes;h.uv_bytes=f.layout.uv_bytes;h.plane_count=f.layout.plane_count;h.format=(std::uint32_t)f.layout.format;h.y_share_id=f.layout.y_share_id;h.uv_share_id=f.layout.uv_share_id;h.y_phy=f.layout.y_phy;h.uv_phy=f.layout.uv_phy;int fds[2]={f.layout.y_fd,f.layout.uv_fd};h.fd_count=(fds[0]>=0)+(fds[1]>=0);if(!h.fd_count)return false; iovec iov{&h,sizeof(h)};char cmsgbuf[CMSG_SPACE(sizeof(fds))]{};msghdr msg{};msg.msg_iov=&iov;msg.msg_iovlen=1;msg.msg_control=cmsgbuf;msg.msg_controllen=CMSG_SPACE(sizeof(int)*h.fd_count);cmsghdr*c=CMSG_FIRSTHDR(&msg);c->cmsg_level=SOL_SOCKET;c->cmsg_type=SCM_RIGHTS;c->cmsg_len=CMSG_LEN(sizeof(int)*h.fd_count);std::memcpy(CMSG_DATA(c),fds,sizeof(int)*h.fd_count);return sendmsg(sock,&msg,MSG_NOSIGNAL)==(ssize_t)sizeof(h);}
+bool recvFrame(int sock,FrameHeader&h,int fds[2]){std::memset(fds,-1,sizeof(int)*2);iovec iov{&h,sizeof(h)};char cmsgbuf[CMSG_SPACE(sizeof(int)*2)]{};msghdr msg{};msg.msg_iov=&iov;msg.msg_iovlen=1;msg.msg_control=cmsgbuf;msg.msg_controllen=sizeof(cmsgbuf);ssize_t n=recvmsg(sock,&msg,MSG_WAITALL);if(n!=(ssize_t)sizeof(h)||h.magic!=kFrameMagic||h.fd_count>2)return false;for(cmsghdr*c=CMSG_FIRSTHDR(&msg);c;c=CMSG_NXTHDR(&msg,c))if(c->cmsg_level==SOL_SOCKET&&c->cmsg_type==SCM_RIGHTS){std::memcpy(fds,CMSG_DATA(c),sizeof(int)*h.fd_count);break;}return fds[0]>=0;}
+bool sendResult(int sock,const Result&r){ResultHeader h;h.frame_id=r.id;h.timestamp=r.timestamp;h.detection_count=(std::uint32_t)r.detections.size();h.import_ms=r.import_ms;h.bpu_ms=r.bpu_ms;h.infer_ms=r.infer_ms;h.post_ms=r.post_ms;if(!sendAll(sock,&h,sizeof(h)))return false; if(h.detection_count&&!sendAll(sock,r.detections.data(),h.detection_count*sizeof(Detection)))return false;return sendAll(sock,r.mask.data(),r.mask.size());}
+bool recvResult(int sock,Result&r){ResultHeader h;if(!recvAll(sock,&h,sizeof(h))||h.magic!=kResultMagic||h.detection_count>1024||h.mask_bytes!=r.mask.size())return false;r.id=h.frame_id;r.timestamp=h.timestamp;r.import_ms=h.import_ms;r.bpu_ms=h.bpu_ms;r.infer_ms=h.infer_ms;r.post_ms=h.post_ms;r.detections.resize(h.detection_count);if(h.detection_count&&!recvAll(sock,r.detections.data(),h.detection_count*sizeof(Detection)))return false;return recvAll(sock,r.mask.data(),r.mask.size());}
+int makeServer(const std::string&path){int s=socket(AF_UNIX,SOCK_STREAM,0);if(s<0)return -1;unlink(path.c_str());sockaddr_un a{};a.sun_family=AF_UNIX;std::snprintf(a.sun_path,sizeof(a.sun_path),"%s",path.c_str());if(bind(s,(sockaddr*)&a,sizeof(a))<0||listen(s,1)<0){close(s);return -1;}return s;}
+int connectUnix(const std::string&path){int s=socket(AF_UNIX,SOCK_STREAM,0);if(s<0)return -1;sockaddr_un a{};a.sun_family=AF_UNIX;std::snprintf(a.sun_path,sizeof(a.sun_path),"%s",path.c_str());for(int i=0;i<50;i++){if(connect(s,(sockaddr*)&a,sizeof(a))==0)return s;usleep(100000);}close(s);return -1;}
+}
